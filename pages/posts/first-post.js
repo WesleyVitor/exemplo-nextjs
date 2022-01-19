@@ -1,5 +1,10 @@
+import { Layout } from "../../components/Layout";
 const FirstPost = ()=>{
-    return <h1>Primeiro Post</h1>
-}
+    return (
+        <Layout>
+            <h1>Primeiro Post</h1>
+        </Layout>
+        
+)}
 
 export default FirstPost;

@@ -1,8 +1,9 @@
 import {useState} from 'react';
 import Link from 'next/link';
+import { Layout } from '../components/Layout';
 const Home = ()=>{
     return(
-        <div>
+        <Layout>
             <h2>
                Contador App
             </h2>
@@ -14,7 +15,7 @@ const Home = ()=>{
                     Listar Produtos
                 </a>
             </Link>
-        </div>
+        </Layout>
     );
 }
 

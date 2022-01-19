@@ -1,5 +1,5 @@
 import { Table } from "../components/Table";
-
+import { Layout } from "../components/Layout";
 const Produto = ()=>{
     const contents= [
         {
@@ -13,7 +13,11 @@ const Produto = ()=>{
     ]
 
 
-    return <Table contents={contents}/>
+    return (
+        <Layout>
+            <Table contents={contents}/>
+        </Layout>
+        )
 }
 
 export default Produto;
