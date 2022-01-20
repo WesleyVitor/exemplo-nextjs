@@ -21,9 +21,9 @@ export const Menu = ()=>{
         <div>
             <ul className={styles.listMenu}>
                 {
-                    categories.map(category=>{
+                    categories.map((category,index)=>{
                         return(
-                            <li>
+                            <li key={index}>
                                 <Link href={category.link}>
                                     <a className={styles.categoryItem}>{category.label}</a>
                                 </Link>
