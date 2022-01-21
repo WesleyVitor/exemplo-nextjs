@@ -18,12 +18,8 @@ const Home = ()=>{
                 </a>
             </Link>
 
-            <h2>Acesse a página de lista de Filmes</h2>
-            <Link href="/movies">
-                <a>
-                    Listar Filmes
-                </a>
-            </Link>
+            
+            
             
 
 
