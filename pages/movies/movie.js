@@ -2,6 +2,7 @@ import useSWR from 'swr';
 import {fetcher} from '../../util/utilFunctions';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 export function getServerSideProps(context){
     let {title} = context.query
     console.log(title);
@@ -16,7 +17,9 @@ export function getServerSideProps(context){
 
 
 const Movie = ({title})=>{
-
+    <Head>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+    </Head>
     const {data,error} = useSWR(`http://www.omdbapi.com/?apikey=9edb7018&t=${title}`,fetcher);
 
 
