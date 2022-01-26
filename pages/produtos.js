@@ -14,9 +14,9 @@ const Produto = ()=>{
 
 
     return (
-        <Layout>
+        
             <Table contents={contents}/>
-        </Layout>
+        
         )
 }
 

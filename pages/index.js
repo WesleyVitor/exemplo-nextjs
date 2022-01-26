@@ -4,9 +4,8 @@ import { Layout } from '../components/Layout';
 
 const Home = ()=>{
     return(
-        <Layout>
-            
-            <h2>
+        <>
+        <h2>
                Contador App
             </h2>
             <Contador/>
@@ -17,13 +16,12 @@ const Home = ()=>{
                     Listar Produtos
                 </a>
             </Link>
-
+        
+        </>
             
             
+
             
-
-
-        </Layout>
     );
 }
 

@@ -1,0 +1,11 @@
+
+
+.main{
+    display: flex;
+}
+
+.barra_lateral{
+    background: #81A1C1;
+    width: 100px;
+    height: 100vh;
+}

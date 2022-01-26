@@ -1,12 +1,17 @@
 import { Menu } from "../Menu";
+import styles from './styles.module.css';
 export const Layout = ({children})=>{
     return (
         <div>
-            <header>
+            <header className={styles.cabecalho}>
                 <Menu/>
             </header>
-            <main>
+            <main className={styles.main}>
+                <aside className={styles.barra_lateral}/>
+                <div>
                 {children}
+                </div>
+                
             </main>
         </div>
     );
