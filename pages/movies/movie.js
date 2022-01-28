@@ -3,12 +3,23 @@ import {fetcher} from '../../util/utilFunctions';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
-export function getServerSideProps(context){
+
+export function buscarDados(){
+    return ;
+}
+
+
+export async function getServerSideProps(context){
+    const apiKey = process.env.APIKEY_OMDBAPI;
     let {title} = context.query
-    console.log(title);
+    const res = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`);
+    const data = await res.json();
+
+
     return {
         props:{
-            title
+            data
+            
         }
     }
 }
@@ -16,14 +27,11 @@ export function getServerSideProps(context){
 
 
 
-const Movie = ({title})=>{
-    <Head>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
-    </Head>
-    const {data,error} = useSWR(`http://www.omdbapi.com/?apikey=9edb7018&t=${title}`,fetcher);
+const Movie = ({data})=>{
+    
+    
 
-
-    if (error) return <div>Falha na Requisição...</div>
+    //if (error) return <div>Falha na Requisição...</div>
 
     if(!data) return <div>Carregando...</div>
 
