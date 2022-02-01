@@ -2,11 +2,6 @@ import useSWR from "swr";
 import { fetcher } from "../../util/utilFunctions";
 import Image from "next/image";
 import Link from "next/link";
-import Head from "next/head";
-
-export function buscarDados() {
-    return;
-}
 
 export async function getServerSideProps(context) {
     const apiKey = process.env.APIKEY_OMDBAPI;
@@ -38,7 +33,7 @@ const Movie = ({ data }) => {
             <fieldset>
                 <Image priority src={data.Poster} width={200} height={200} />
             </fieldset>
-            <Link href="/movies/movies2">
+            <Link href="/movies/movies3">
                 <a>Lista de Filmes</a>
             </Link>
         </div>
