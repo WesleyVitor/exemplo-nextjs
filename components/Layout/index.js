@@ -1,18 +1,12 @@
 import { Menu } from "../Menu";
-import styles from './styles.module.css';
-export const Layout = ({children})=>{
+import styles from "./styles.module.css";
+export const Layout = ({ children }) => {
     return (
-        <div>
+        <div className={styles.container}>
             <header className={styles.cabecalho}>
-                <Menu/>
+                <Menu />
             </header>
-            <main className={styles.main}>
-                <aside className={styles.barra_lateral}/>
-                <div>
-                {children}
-                </div>
-                
-            </main>
+            <main className={styles.main}>{children}</main>
         </div>
     );
-}
+};

@@ -1,17 +1,19 @@
 import { useState } from "react";
 import Link from "next/link";
-import { Layout } from "../components/Layout";
 
 const Home = () => {
     return (
         <>
-            <h2>Contador App</h2>
-            <Contador />
-            <br />
-            <h2>Acesse a página de lista de Produtos</h2>
-            <Link href="/produtos">
-                <a>Listar Produtos</a>
-            </Link>
+            <section>
+                <h2>Contador App</h2>
+                <Contador />
+            </section>
+            <section>
+                <h2>Acesse a página de lista de Produtos</h2>
+                <Link href="/produtos">
+                    <a>Listar Produtos</a>
+                </Link>
+            </section>
         </>
     );
 };
