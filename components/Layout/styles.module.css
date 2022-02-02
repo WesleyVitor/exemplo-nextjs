@@ -4,5 +4,6 @@
 
 .main {
     display: flex;
+    padding-top: 20px;
     justify-content: space-evenly;
 }

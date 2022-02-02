@@ -1,4 +1,4 @@
-export const TheMovies = ({ data, show }) => {
+export const TheMovies = ({ data, show, handleClickDescription }) => {
     if (!show) return <div></div>;
 
     if (data.error) return <div>Falha na requisição</div>;
@@ -12,6 +12,9 @@ export const TheMovies = ({ data, show }) => {
                     <a href={`/movies/movie/?&title=${m.Title}`}>
                         Descrição em outra página
                     </a>
+                    <button onClick={() => handleClickDescription(m.Title)}>
+                        Descrição
+                    </button>
                 </div>
             ))}
         </div>
