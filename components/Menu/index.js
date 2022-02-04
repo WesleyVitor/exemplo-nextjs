@@ -21,6 +21,10 @@ const categories = [
         label: "Filmes3",
         link: "/movies/movies3",
     },
+    {
+        label: "Filmes33",
+        link: "/movies/movies33",
+    },
 ];
 
 export const Menu = () => {
