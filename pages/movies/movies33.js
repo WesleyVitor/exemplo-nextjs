@@ -1,17 +1,32 @@
 import useSWR from "swr";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-export function TheForm() {
+const schema = yup.object({
+    titleSearchString: yup.string().required("Campo Obrigatório"),
+});
+
+export function TheForm({ onClickHandler }) {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
+    });
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit(onClickHandler)}>
                 <label htmlFor="titleSearchString">Filtro de Título</label>
                 <input
+                    {...register("titleSearchString")}
                     id="titleSearchString"
-                    name="titleSearchString"
-                    type="text"
-                    autoComplete="true"
                 />
+                <p>{errors.titleSearchString?.message}</p>
+                <input type="submit" value="Enviar" />
             </form>
         </div>
     );
@@ -24,7 +39,7 @@ export function TheMovies({ data, show }) {
 
     if (data.error) return <div>falha na pesquisa</div>;
 
-    if (data.Search === "") return <div>carregando...</div>;
+    if (data.Search === []) return <div>carregando...</div>;
 
     return (
         <div>
@@ -37,12 +52,12 @@ export function TheMovies({ data, show }) {
     );
 }
 
-export function TheLink({ url, handler }) {
+export function TheLink({ url, handleShow, show }) {
     return (
         <div>
-            <a href="/movies/movies33" onClick={handler}>
+            <a href="/movies/movies33" onClick={handleShow}>
                 {" "}
-                {url === "" ? "Mostrar" : "Ocultar"}{" "}
+                {!show ? "Mostrar" : "Ocultar"}{" "}
             </a>
         </div>
     );
@@ -50,7 +65,7 @@ export function TheLink({ url, handler }) {
 
 export default function Movies33() {
     const [state, setState] = useState({ url: "", titleSearchString: "" });
-
+    const [show, setShow] = useState(false);
     const { data, error } = useSWR(state.url, async (u) => {
         if (!state.url || !state.titleSearchString) return { Search: [] };
 
@@ -66,27 +81,31 @@ export default function Movies33() {
         return json;
     });
 
-    const onClickHandler = (e) => {
-        e.preventDefault();
-
-        let s = document.getElementById("titleSearchString").value;
-
+    const onClickHandler = ({ titleSearchString: title }) => {
+        //let s = document.getElementById("titleSearchString").value;
+        //console.log(s);
+        setShow(!show);
         if (state.url === "") {
-            setState({ url: "http://www.omdbapi.com", titleSearchString: s });
+            setState({
+                url: "http://www.omdbapi.com",
+                titleSearchString: title,
+            });
         } else
             setState({ url: "", titleSearchString: state.titleSearchString });
     };
 
+    const handleShow = (e) => {
+        e.preventDefault();
+        setShow(!show);
+    };
+
     return (
         <div>
-            <TheForm />
+            <TheForm onClickHandler={onClickHandler} />
 
-            <TheLink url={state.url} handler={onClickHandler} />
+            <TheLink url={state.url} handleShow={handleShow} show={show} />
 
-            <TheMovies
-                data={data ? data : { Search: "" }}
-                show={state.url !== ""}
-            />
+            <TheMovies data={data ? data : { Search: [] }} show={show} />
         </div>
     );
 }

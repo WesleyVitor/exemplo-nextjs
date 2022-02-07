@@ -11,9 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hookform/resolvers": "^2.8.8",
     "next": "^12.0.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "swr": "^1.2.0"
+    "react-hook-form": "^7.26.1",
+    "swr": "^1.2.0",
+    "yup": "^0.32.11"
   }
 }
