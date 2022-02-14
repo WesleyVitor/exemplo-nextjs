@@ -87,7 +87,7 @@ export default function Movies33() {
         setShow(!show);
         if (state.url === "") {
             setState({
-                url: "http://www.omdbapi.com",
+                url: "https://www.omdbapi.com",
                 titleSearchString: title,
             });
         } else

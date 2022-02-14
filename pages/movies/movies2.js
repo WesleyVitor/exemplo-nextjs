@@ -11,7 +11,7 @@ async function fetcher(url) {
 
 const Movie2 = () => {
     const { data, error } = useSWR(
-        "http://www.omdbapi.com/?apikey=9edb7018&s=bagdad",
+        "https://www.omdbapi.com/?apikey=9edb7018&s=bagdad",
         fetcher
     );
 

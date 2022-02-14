@@ -7,7 +7,7 @@ export async function getServerSideProps(context) {
     const apiKey = process.env.APIKEY_OMDBAPI;
     let { title } = context.query;
     const res = await fetch(
-        `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`
+        `https://www.omdbapi.com/?apikey=${apiKey}&t=${title}`
     );
     const data = await res.json();
 

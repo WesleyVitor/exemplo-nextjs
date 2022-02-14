@@ -16,7 +16,7 @@ export default function Movies3() {
         setHidden(true);
         if (url === "")
             setUrl(
-                `http://www.omdbapi.com/?apikey=9edb7018&s=${
+                `https://www.omdbapi.com/?apikey=9edb7018&s=${
                     filme ? filme : "bagdad"
                 }`
             );
